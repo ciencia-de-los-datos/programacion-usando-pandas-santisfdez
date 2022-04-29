@@ -7,6 +7,7 @@ Este archivo contiene las preguntas que se van a realizar en el laboratorio.
 Utilice los archivos `tbl0.tsv`, `tbl1.tsv` y `tbl2.tsv`, para resolver las preguntas.
 
 """
+from re import X
 import pandas as pd
 
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
@@ -22,7 +23,10 @@ def pregunta_01():
     40
 
     """
-    return
+
+    x=len(tbl0)
+   
+    return x
 
 
 def pregunta_02():
@@ -33,7 +37,9 @@ def pregunta_02():
     4
 
     """
-    return
+    x=tbl0.shape[1]
+    
+    return x
 
 
 def pregunta_03():
@@ -50,7 +56,10 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    df=pd.DataFrame(tbl0,columns=["_c1","_c0"])
+    x=tbl0.groupby("_c1")["_c0"].nunique()
+
+    return x
 
 
 def pregunta_04():
