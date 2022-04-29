@@ -190,10 +190,13 @@ def pregunta_10():
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     
-    dt=pd.DataFrame(tbl0)
-    dt=dt.groupby(["_c1"])["_c2"].transform(lambda x: ":".join(str(x)))
     
-    return
+    dt=pd.DataFrame(tbl0)
+    dt["_c2"]=dt["_c2"].apply(lambda x: str(x))
+    dt=dt.sort_values(by=["_c2"])
+    dt=dt.groupby(["_c1"]).agg({"_c2": ":".join})
+    
+    return dt
 
 
 def pregunta_11():
@@ -247,4 +250,6 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
+
+    
     return
