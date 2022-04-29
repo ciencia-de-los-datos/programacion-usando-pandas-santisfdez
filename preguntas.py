@@ -108,7 +108,7 @@ def pregunta_06():
 
     """
     import numpy as np
-    dt=np.sort(tbl1["_c4"].apply(lambda x: x.upper()).unique())
+    dt=list(np.sort(tbl1["_c4"].apply(lambda x: x.upper()).unique()))
     
     
     return dt
