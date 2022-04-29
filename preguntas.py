@@ -7,7 +7,9 @@ Este archivo contiene las preguntas que se van a realizar en el laboratorio.
 Utilice los archivos `tbl0.tsv`, `tbl1.tsv` y `tbl2.tsv`, para resolver las preguntas.
 
 """
+from ntpath import join
 from re import X
+from turtle import xcor
 import pandas as pd
 
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
@@ -127,8 +129,9 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
+    x=tbl0.groupby(["_c1"])["_c2"].sum()
 
+    return x
 
 def pregunta_08():
     """
@@ -145,7 +148,10 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    dt=pd.DataFrame(tbl0)
+    dt["suma"]=dt["_c0"]+dt["_c2"]
+    
+    return dt
 
 
 def pregunta_09():
@@ -163,7 +169,12 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
+
+    dt=pd.DataFrame(tbl0)
+    dt["year"]=dt["_c3"].str.slice(0,4)
+
+    
+    return dt
 
 
 def pregunta_10():
@@ -180,8 +191,11 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+    
+    dt=tbl0.groupby(["_c0"])["_c2"].transform(lambda x: ":".join(str(x)))
+    print(dt)
     return
-
+pregunta_10()
 
 def pregunta_11():
     """
