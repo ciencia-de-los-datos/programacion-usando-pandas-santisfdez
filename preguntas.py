@@ -192,9 +192,9 @@ def pregunta_10():
     
     dt=pd.DataFrame(tbl0)
     dt=dt.groupby(["_c1"])["_c2"].transform(lambda x: ":".join(str(x)))
-    print(dt)
+    
     return
-pregunta_10()
+
 
 def pregunta_11():
     """
