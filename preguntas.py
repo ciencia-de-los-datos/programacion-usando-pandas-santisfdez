@@ -216,12 +216,13 @@ def pregunta_11():
     39   39    a,d,f
     """
     dt=pd.DataFrame(tbl1)
-    #dt["_c4"]=dt["_c4"].apply(lambda x: str(x))
+    dt["_c4"]=dt["_c4"].apply(lambda x: str(x))
     dt=dt.sort_values(by=["_c4"])
-    dt=dt.groupby(["_c0"]).agg({"_c4": ",".join})
+    dt=dt.groupby(["_c0"], as_index=False).agg({"_c4": ",".join})
     
-    return dt
-
+    print(dt.head())
+    return 
+pregunta_11()
 
 def pregunta_12():
     """
