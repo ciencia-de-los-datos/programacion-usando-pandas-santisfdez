@@ -238,7 +238,14 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    dt=pd.DataFrame(tbl2)
+    dt["_c5a"]=dt["_c5a"].apply(lambda x: str(x))
+    dt["_c5b"]=dt["_c5b"].apply(lambda x: str(x))
+    dt["_c5"]=dt[["_c5a","_c5b"]].agg(":".join,axis=1)
+    dt=dt.sort_values(by=["_c5"])
+    dt=dt.groupby(["_c0"],as_index=False).agg({"_c5": ",".join})
+    
+    return dt
 
 
 def pregunta_13():
