@@ -220,9 +220,8 @@ def pregunta_11():
     dt=dt.sort_values(by=["_c4"])
     dt=dt.groupby(["_c0"], as_index=False).agg({"_c4": ",".join})
     
-    print(dt.head())
-    return 
-pregunta_11()
+    return dt
+
 
 def pregunta_12():
     """
