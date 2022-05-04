@@ -8,6 +8,7 @@ Utilice los archivos `tbl0.tsv`, `tbl1.tsv` y `tbl2.tsv`, para resolver las preg
 
 """
 
+from numpy import right_shift
 import pandas as pd
 
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
@@ -263,5 +264,11 @@ def pregunta_13():
     Name: _c5b, dtype: int64
     """
 
-    
-    return
+    dt1=pd.DataFrame(tbl0)
+    dt2=pd.DataFrame(tbl2)
+
+    dt=pd.merge(dt1,dt2)
+    dt=dt.sort_values(by=["_c1"])
+    dt=dt.groupby(["_c1"])["_c5b"].sum()
+
+    return dt
